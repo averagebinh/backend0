@@ -6,6 +6,7 @@ const {
   getHoiDanIt,
   postCreateUser,
   getCreatePage,
+  getUpdatePage,
 } = require('../controller/homeController');
 router.get(
   '/',
@@ -18,6 +19,7 @@ router.get('/abc', getABC);
 router.get('/hoidanit', getHoiDanIt);
 
 router.get('/create', getCreatePage);
+router.get('/update', getUpdatePage);
 
 router.post('/create-user', postCreateUser);
 
