@@ -17,15 +17,6 @@ configViewEngine(app);
 //route
 app.use('/', webRoutes);
 
-// A simple SELECT query
-// connection.query('SELECT * FROM Users', (err, results, fields) => {
-//   if (err) {
-//     console.log('Error executing query:', err);
-//   } else {
-//     console.log('>>>result1: ', results); // rows returned by server
-//   }
-// });
-
 app.listen(port, hostname, () => {
   console.log(`Example app listening on port ${port}`);
 });
