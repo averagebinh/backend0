@@ -1,5 +1,5 @@
 const connection = require('../config/database');
-const { getAllUsers } = require('../service/CRUBService');
+const { getAllUsers, getUserById } = require('../service/CRUBService');
 
 const getHomePage = async (req, res) => {
   let results = await getAllUsers();
@@ -34,11 +34,13 @@ const postCreateUser = async (req, res) => {
 const getCreatePage = (req, res) => {
   res.render('create.ejs');
 };
-const getUpdatePage = (req, res) => {
+
+const getUpdatePage = async (req, res) => {
   const userId = req.params.id;
-  console.log(req.params, userId);
-  res.render('edit.ejs');
+  let user = await getUserById(userId);
+  res.render('edit.ejs', { userEdit: user });
 };
+
 module.exports = {
   getHomePage,
   getABC,

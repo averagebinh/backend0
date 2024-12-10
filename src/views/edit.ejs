@@ -7,6 +7,7 @@
   </head>
 
   <body>
+    <%= JSON.stringify(userEdit)%>
     <div class="topnav">
       <a href="/">Home</a>
       <a href="/create">Create users</a>
@@ -17,16 +18,20 @@
           <legend>Update an user:</legend>
           <div class="input-group">
             <label>Email:</label>
-            <input type="email" name="email" /><br /><br />
+            <input type="email" name="email" value="<%= userEdit.email%>" />
           </div>
           <div class="input-group">
             <label>Name:</label>
-            <input type="text" name="myName" /><br /><br />
+            <input type="text" name="myName" value="<%= userEdit.name %>" />
           </div>
 
           <div class="input-group">
             <label>City:</label>
-            <input type="text" name="city" /><br /><br />
+            <input
+              type="text"
+              name="city"
+              value="<%= userEdit.city %>"
+            /><br /><br />
           </div>
           <div>
             <button>Save</button>
