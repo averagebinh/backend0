@@ -12,26 +12,31 @@ const getHoiDanIt = (req, res) => {
   res.render('sample.ejs');
 };
 
-const postCreateUser = (req, res) => {
+const postCreateUser = async (req, res) => {
   console.log('req.body', req.body);
   let email = req.body.email;
   let name = req.body.myName;
   let city = req.body.city;
   console.log('email', email, 'name', name, 'city', city);
-  connection.query(
-    `INSERT INTO 
-    Users (email,name, city) 
+
+  let [results, fields] = await connection.query(
+    `INSERT INTO
+    Users (email,name, city)
     VALUES (?, ? ,? )`,
-    [email, name, city],
-    function (err, results) {
-      console.log(results);
-      res.send('create user succeed!');
-    }
+    [email, name, city]
   );
+  console.log('check results test: ', results);
+  res.send('create user succeed test!');
 };
+
+const getCreatePage = (req, res) => {
+  res.render('create.ejs');
+};
+
 module.exports = {
   getHomePage,
   getABC,
   getHoiDanIt,
   postCreateUser,
+  getCreatePage,
 };

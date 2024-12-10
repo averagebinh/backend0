@@ -5,6 +5,7 @@ const {
   getABC,
   getHoiDanIt,
   postCreateUser,
+  getCreatePage,
 } = require('../controller/homeController');
 router.get(
   '/',
@@ -15,6 +16,8 @@ router.get(
 router.get('/abc', getABC);
 
 router.get('/hoidanit', getHoiDanIt);
+
+router.get('/create', getCreatePage);
 
 router.post('/create-user', postCreateUser);
 
