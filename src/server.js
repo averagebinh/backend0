@@ -3,11 +3,10 @@ require('dotenv').config();
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./route/web');
 const connection = require('./config/database');
-const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 8888;
 const hostname = process.env.HOST_NAME;
-
+const Kitten = require('./model/Kitten');
 //config req.body
 app.use(express.json()); // for json
 app.use(express.urlencoded({ extended: true })); // for form data
@@ -18,14 +17,9 @@ configViewEngine(app);
 //route
 app.use('/', webRoutes);
 
-const kittySchema = new mongoose.Schema({
-  name: String,
-});
+const cat = new Kitten({ name: 'Binh cat model' });
 
-const Kitten = mongoose.model('Kitten', kittySchema);
-const cat = new Kitten({ name: 'Binh cat' });
 cat.save();
-
 (async () => {
   try {
     // test connection
