@@ -3,19 +3,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update an user</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
   </head>
 
   <body>
-    <%= JSON.stringify(userEdit)%>
     <div class="topnav">
       <a href="/">Home</a>
-      <a href="/create">Create users</a>
+      <a href="/update-user">Update users</a>
     </div>
     <div class="form-add-new">
-      <form action="/create-user" method="post">
+      <form action="/update-user" method="post">
         <fieldset>
           <legend>Update an user:</legend>
+          <div class="input-group d-none">
+            <label>Id:</label>
+            <input type="text" name="userId" value="<%= userEdit.id%>" />
+          </div>
           <div class="input-group">
             <label>Email:</label>
             <input type="email" name="email" value="<%= userEdit.email%>" />
