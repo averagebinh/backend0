@@ -1,5 +1,9 @@
 const connection = require('../config/database');
-const { getAllUsers, getUserById } = require('../service/CRUDService');
+const {
+  getAllUsers,
+  getUserById,
+  updateUserById,
+} = require('../service/CRUDService');
 
 const getHomePage = async (req, res) => {
   let results = await getAllUsers();
@@ -50,17 +54,10 @@ const postUpdateUser = async (req, res) => {
   let name = req.body.myName;
   let city = req.body.city;
   let userId = req.body.userId;
-
+  await updateUserById(email, name, city, userId);
   console.log('email', email, 'name', name, 'city', city, 'id', userId);
 
-  let [results, fields] = await connection.query(
-    `UPDATE Users 
-      SET email = ?, name = ?, city = ?
-      WHERE id = ?`,
-    [email, name, city, userId]
-  );
-  console.log('check results test: ', results);
-  res.send('updated user succeed test!');
+  res.redirect('/');
 };
 
 module.exports = {
