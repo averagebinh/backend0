@@ -9,13 +9,17 @@
   <body>
     <div class="topnav">
       <a href="/">Home</a>
-      <a href="/update-user">Update users</a>
+      <a href="/create">Update users</a>
     </div>
     <div class="form-add-new">
       <form action="/delete-user" method="post">
         <fieldset>
           <legend>Delete an user:</legend>
 
+          <div class="input-group d-none">
+            <label>Id:</label>
+            <input type="text" name="userId" value="<%= userEdit.id%>" />
+          </div>
           <div class="input-group">
             <label>Email:</label>
             <input type="text" name="email" value="<%= userEdit.email%>" />
