@@ -3,6 +3,7 @@ require('dotenv').config();
 const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./route/web');
 const apiRoutes = require('./route/api');
+const fileUpload = require('express-fileupload');
 
 const connection = require('./config/database');
 const app = express();
@@ -14,6 +15,9 @@ app.use(express.urlencoded({ extended: true })); // for form data
 
 //view engine
 configViewEngine(app);
+
+// default options
+app.use(fileUpload());
 
 //route
 app.use('/', webRoutes);

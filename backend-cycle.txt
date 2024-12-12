@@ -1,0 +1,7 @@
+#request => response cycle
+
+view => routes => controller => service => view 
+
+#middleware
+
+view => routes => req.file (middleware- before config route) controller => service => view 
