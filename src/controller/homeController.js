@@ -41,7 +41,8 @@ const getCreatePage = (req, res) => {
 
 const getUpdatePage = async (req, res) => {
   const userId = req.params.id;
-  let user = await getUserById(userId);
+  // let user = await getUserById(userId);
+  let user = await User.findById(userId).exec();
   // console.log('>> check results', results);
   res.render('edit.ejs', { userEdit: user });
 };
@@ -50,11 +51,23 @@ const postUpdateUser = async (req, res) => {
   console.log('req.body', req.body);
 
   // name property
-  let email = req.body.email;
-  let name = req.body.myName;
-  let city = req.body.city;
-  let userId = req.body.userId;
-  await updateUserById(email, name, city, userId);
+  // let email = req.body.email;
+  // let name = req.body.myName;
+  // let city = req.body.city;
+  // let userId = req.body.userId;
+  const { email, myName: name, city, userId } = req.body;
+  // await updateUserById(email, name, city, userId);
+  // await User.updateOne(
+  //   { name: name },
+  //   { email: email },
+  //   { city: city },
+  //   { userId: userId }
+  // );
+  await User.updateOne(
+    { _id: userId }, // Filter: Find the user by ID
+    { $set: { email, name, city } } // Update: Set the fields to new values
+  );
+
   console.log('email', email, 'name', name, 'city', city, 'id', userId);
 
   res.redirect('/');
