@@ -50,19 +50,8 @@ const getUpdatePage = async (req, res) => {
 const postUpdateUser = async (req, res) => {
   console.log('req.body', req.body);
 
-  // name property
-  // let email = req.body.email;
-  // let name = req.body.myName;
-  // let city = req.body.city;
-  // let userId = req.body.userId;
   const { email, myName: name, city, userId } = req.body;
-  // await updateUserById(email, name, city, userId);
-  // await User.updateOne(
-  //   { name: name },
-  //   { email: email },
-  //   { city: city },
-  //   { userId: userId }
-  // );
+
   await User.updateOne(
     { _id: userId }, // Filter: Find the user by ID
     { $set: { email, name, city } } // Update: Set the fields to new values
