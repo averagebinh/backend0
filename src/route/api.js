@@ -43,4 +43,19 @@ routerAPI.delete('/customers', deleteACustomer);
 
 routerAPI.delete('/customers-many', deleteArrayCustomer);
 
+routerAPI.get('/binhquery', (req, res) => {
+  console.log('>>check req.query', req.query);
+  res.status(200).json({
+    data: req.query,
+  });
+});
+
+routerAPI.get('/info/:name/:city', (req, res) => {
+  console.log('>>check req.params', req.params);
+
+  res.status(200).json({
+    data: req.params,
+  });
+});
+
 module.exports = routerAPI;
