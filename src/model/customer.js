@@ -11,7 +11,17 @@ const customerSchema = new mongoose.Schema(
     image: String,
     description: String,
   },
-  { timestamps: true }
+  {
+    timestamps: true, //createdAt, updatedAt
+    // statics: {
+    //   findByBinhNguyen(name) {
+    //     return this.find({ name: new RegExp(name, 'i') });
+    //   },
+    //   findByJohn(name) {
+    //     return this.find({ name: new RegExp(name, 'i') });
+    //   },
+    // },
+  }
 );
 // Override all methods
 customerSchema.plugin(mongoose_delete, { overrideMethods: 'all' });
