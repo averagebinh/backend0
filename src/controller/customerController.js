@@ -4,6 +4,7 @@ const {
   createCustomerService,
   createArrayCustomerService,
   getAllCustomerService,
+  updateCustomerService,
 } = require('../service/customerService');
 
 module.exports = {
@@ -58,6 +59,17 @@ module.exports = {
     return res.status(200).json({
       EC: 0,
       data: results,
+    });
+  },
+
+  putUpdateCustomers: async (req, res) => {
+    console.log('check req.body >>>', req.body);
+    let { name, email, address, userId } = req.body;
+    let user = await updateCustomerService(userId, name, email, address);
+
+    return res.status(200).json({
+      EC: 0,
+      data: user,
     });
   },
 };
