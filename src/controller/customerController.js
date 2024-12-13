@@ -3,6 +3,7 @@ const { uploadSingleFile } = require('../service/fileService');
 const {
   createCustomerService,
   createArrayCustomerService,
+  getAllCustomerService,
 } = require('../service/customerService');
 
 module.exports = {
@@ -49,5 +50,14 @@ module.exports = {
         data: customers,
       });
     }
+  },
+
+  getAllCustomer: async (req, res) => {
+    let results = await getAllCustomerService();
+
+    return res.status(200).json({
+      EC: 0,
+      data: results,
+    });
   },
 };
