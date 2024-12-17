@@ -19,6 +19,11 @@ const {
   deleteACustomer,
   deleteArrayCustomer,
 } = require('../controller/customerController');
+
+const {
+  postCreateProject,
+  getAllProject,
+} = require('../controller/projectController');
 routerAPI.get('/users', getUsersAPI);
 
 routerAPI.post('/users', postCreateUserAPI);
@@ -42,6 +47,10 @@ routerAPI.put('/customers', putUpdateCustomers);
 routerAPI.delete('/customers', deleteACustomer);
 
 routerAPI.delete('/customers-many', deleteArrayCustomer);
+
+routerAPI.post('/projects', postCreateProject);
+
+routerAPI.get('/projects', getAllProject);
 
 routerAPI.get('/binhquery', (req, res) => {
   console.log('>>check req.query', req.query);
