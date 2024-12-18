@@ -28,7 +28,12 @@ const getTasks = async (queryString) => {
   return result;
 };
 
+const deleteTask = async (id) => {
+  let result = await Task.deleteOne({ _id: id });
+  return result;
+};
 module.exports = {
   createTask,
   getTasks,
+  deleteTask,
 };
