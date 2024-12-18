@@ -27,7 +27,7 @@ const {
   updateAProject,
 } = require('../controller/projectController');
 
-const { createATask } = require('../controller/taskController');
+const { createATask, getAllTasks } = require('../controller/taskController');
 routerAPI.get('/users', getUsersAPI);
 
 routerAPI.post('/users', postCreateUserAPI);
@@ -62,6 +62,8 @@ routerAPI.put('/projects', updateAProject);
 
 // tasks
 routerAPI.post('/tasks', createATask);
+
+routerAPI.get('/tasks', getAllTasks);
 
 routerAPI.get('/binhquery', (req, res) => {
   console.log('>>check req.query', req.query);
