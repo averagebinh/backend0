@@ -23,6 +23,8 @@ const {
 const {
   postCreateProject,
   getAllProject,
+  deleteAProject,
+  updateAProject,
 } = require('../controller/projectController');
 routerAPI.get('/users', getUsersAPI);
 
@@ -51,6 +53,10 @@ routerAPI.delete('/customers-many', deleteArrayCustomer);
 routerAPI.post('/projects', postCreateProject);
 
 routerAPI.get('/projects', getAllProject);
+
+routerAPI.delete('/projects/', deleteAProject);
+
+routerAPI.put('/projects/', updateAProject);
 
 routerAPI.get('/binhquery', (req, res) => {
   console.log('>>check req.query', req.query);
