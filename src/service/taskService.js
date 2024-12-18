@@ -8,6 +8,7 @@ const createTask = async (data) => {
     let results = await Task.create(data);
     return results;
   }
+
   return null;
 };
 
