@@ -45,8 +45,16 @@ const deleteProject = async (id) => {
   return result;
 };
 
-const updateProject = async (req, res) => {
-  return res.render('updated a userssss');
+const updateProject = async (data) => {
+  console.log('check projectid', data);
+  const { id, name, startDate, endDate, description } = data;
+  let updateProject = await Project.findById(id).exec();
+  console.log('>>check updateProject', updateProject);
+  let updatedResult = await Project.updateOne(
+    { _id: id }, // Filter: Find the user by ID
+    { $set: { name, endDate, description } } // Update: Set the fields to new values
+  );
+  return updatedResult;
 };
 
 module.exports = {
