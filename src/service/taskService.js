@@ -29,7 +29,7 @@ const getTasks = async (queryString) => {
 };
 
 const deleteTask = async (id) => {
-  let result = await Task.deleteOne({ _id: id });
+  let result = await Task.deleteById(id);
   return result;
 };
 
@@ -39,6 +39,7 @@ const updateTask = async (data) => {
 
   let updatedResult = await Task.updateOne(
     { _id: data.id }, // Filter: Find the user by ID
+    // {... data} => update embeded data in Task Schema use raw JSON.
     { $set: { ...data } } // Update: Set the fields to new values
   );
   return updatedResult;
