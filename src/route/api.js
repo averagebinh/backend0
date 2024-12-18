@@ -31,6 +31,7 @@ const {
   createATask,
   getAllTasks,
   deleteATask,
+  updateATask,
 } = require('../controller/taskController');
 routerAPI.get('/users', getUsersAPI);
 
@@ -70,6 +71,8 @@ routerAPI.post('/tasks', createATask);
 routerAPI.get('/tasks', getAllTasks);
 
 routerAPI.delete('/tasks', deleteATask);
+
+routerAPI.put('/tasks', updateATask);
 
 routerAPI.get('/binhquery', (req, res) => {
   console.log('>>check req.query', req.query);

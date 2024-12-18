@@ -1,5 +1,10 @@
 const Task = require('../model/task');
-const { createTask, getTasks, deleteTask } = require('../service/taskService');
+const {
+  createTask,
+  getTasks,
+  deleteTask,
+  updateTask,
+} = require('../service/taskService');
 
 module.exports = {
   createATask: async (req, res) => {
@@ -20,6 +25,14 @@ module.exports = {
   deleteATask: async (req, res) => {
     let result = await deleteTask(req.body.id);
 
+    return res.status(200).json({
+      EC: 0,
+      data: result,
+    });
+  },
+
+  updateATask: async (req, res) => {
+    let result = await updateTask(req.body);
     return res.status(200).json({
       EC: 0,
       data: result,

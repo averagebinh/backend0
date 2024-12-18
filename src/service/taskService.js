@@ -32,8 +32,20 @@ const deleteTask = async (id) => {
   let result = await Task.deleteOne({ _id: id });
   return result;
 };
+
+const updateTask = async (data) => {
+  console.log('check projectid', data);
+  // const { id, name, startDate, endDate, description } = data;
+
+  let updatedResult = await Task.updateOne(
+    { _id: data.id }, // Filter: Find the user by ID
+    { $set: { ...data } } // Update: Set the fields to new values
+  );
+  return updatedResult;
+};
 module.exports = {
   createTask,
   getTasks,
   deleteTask,
+  updateTask,
 };
