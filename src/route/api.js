@@ -26,6 +26,8 @@ const {
   deleteAProject,
   updateAProject,
 } = require('../controller/projectController');
+
+const { createATask } = require('../controller/taskController');
 routerAPI.get('/users', getUsersAPI);
 
 routerAPI.post('/users', postCreateUserAPI);
@@ -54,9 +56,12 @@ routerAPI.post('/projects', postCreateProject);
 
 routerAPI.get('/projects', getAllProject);
 
-routerAPI.delete('/projects/', deleteAProject);
+routerAPI.delete('/projects', deleteAProject);
 
-routerAPI.put('/projects/', updateAProject);
+routerAPI.put('/projects', updateAProject);
+
+// tasks
+routerAPI.post('/tasks', createATask);
 
 routerAPI.get('/binhquery', (req, res) => {
   console.log('>>check req.query', req.query);
