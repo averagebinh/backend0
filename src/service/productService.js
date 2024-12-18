@@ -20,6 +20,21 @@ const createProject = async (data) => {
     let newResult = await myProject.save();
     return newResult;
   }
+
+  if (data.type === 'REMOVE-USERS') {
+    console.log('>> check data', data);
+    // Use findByIdAndUpdate with $pull to remove users
+    const updatedProject = await Project.findByIdAndUpdate(
+      data.projectId,
+      {
+        $pull: { usersInfor: { $in: data.usersArr } },
+      },
+      { new: true } // Return the updated document
+    ).exec();
+    console.log('>>check updatedProject', updatedProject);
+    return updatedProject;
+  }
+
   return null;
 };
 
@@ -48,8 +63,7 @@ const deleteProject = async (id) => {
 const updateProject = async (data) => {
   console.log('check projectid', data);
   const { id, name, startDate, endDate, description } = data;
-  let updateProject = await Project.findById(id).exec();
-  console.log('>>check updateProject', updateProject);
+
   let updatedResult = await Project.updateOne(
     { _id: id }, // Filter: Find the user by ID
     { $set: { name, endDate, description } } // Update: Set the fields to new values
